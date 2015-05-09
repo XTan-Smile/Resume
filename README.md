@@ -1,3 +1,5 @@
 # Resume
 # This repo is presenting my resume at the latest version.
-# make and then run ./resume
+# in terminal, do the following:
+# make
+# ./resume
