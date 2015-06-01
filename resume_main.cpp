@@ -1,8 +1,8 @@
 /* This is a c++ version of resume of Xiao Tan
  * 
  * int main()
- * 
- * Last modified: May 8, 2015
+ *
+ * Last modified: June 1, 2015
  * 
  * (c) Margaret Tan, Duke University
  */
@@ -14,5 +14,7 @@ int main() {
   margaret.printPersonInfo();
   margaret.printEducation();
   margaret.printExperience();
+  margaret.printPublications();
+  margaret.printExtras();
   return EXIT_SUCCESS;
 }

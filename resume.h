@@ -4,7 +4,7 @@
  *   private class School
  *   private clsdd Experience
  * 
- * Last modified: May 8, 2015
+ * Last modified: June 1, 2015
  * 
  * (c) Margaret Tan, Duke University
  */
@@ -25,6 +25,52 @@ private:
   string email;
   string phone;
   string language;
+
+  class Publication {
+  private: 
+    string title[3];
+    string author[3];
+    string journal[3];
+    string append[3];
+  public: 
+    Publication() {
+      title[2] = "EMD-based electrocardiogram delineation for a wearable low-power ECG monitoring device";
+      title[1] = "Real-Time Baseline Wander Removal in ECG Signal Based on Weighted Local Linear Regression Smoothing";
+      title[0] = "A Bluetooth Low Energy Approach for Monitoring Electrocardiography and Respiration";
+
+      author[2] = "X. Tan, X. Chen, X. Hu, R. Ren, B. Zhou, Z. Fang, S. Xia";
+      author[1] = "X. Tan, X. Chen, X. Hu, R. Ren, B. Zhou, Z. Fang, S. Xia";
+      author[0] = "B. Zhou, X. Chen, X. Hu, R. Ren, X. Tan, Z. Fang, S. Xia";
+
+      journal[2] = "Canadian Journal of Electrical and Computer Engineering";
+      journal[1] = "The Proceedings of IEEE International Conference on Information and Automation (ICIA)";
+      journal[0] = "The Proceedings of IEEE International Conference on e-Health Networking, Applications and Services (Healthcom 2013)";
+
+      append[2] = "vol. 37(4), pp. 212-221, 2014.";
+      append[1] = "Yinchuan, China, 2013";
+      append[0] = "Lisbon, Portugal, 2013";
+    }
+    void printPublication (const int num = 3) {
+      std::cout << CYAN;
+      std::cout << "PUBLICATION" << std::endl;
+      std::cout << RESET;
+      for (int i = num-1; i >= 0; i--) {
+		
+	std::cout << " - ";
+	std::cout << author[i] << ", "; 
+		 
+	std::cout << YELLOW;
+	std::cout << "\"" 
+		  << title[i]  << "\"";
+	std::cout << RESET;
+	std::cout << ", "
+		  << journal[i] << ", "
+		  << append[i] << std::endl;
+      }
+      std::cout << std::endl;
+    }
+    ~Publication() {}
+  };
 
   class School {
   private:
@@ -66,7 +112,6 @@ private:
       }
       std::cout << std::endl;
     }
-
     ~School() {}
   };
 
@@ -137,8 +182,47 @@ private:
     ~Experience() {}
   };
 
+  class ExtraCurr {
+  private:
+    string title[4];
+    string place[4];
+    string time[4];
+  public:
+    ExtraCurr () {
+      title[3] = "Academic writing instructor";
+      title[2] = "Leader of Hip-hop dancing club";
+      title[1] = "Autumn badminton competition";
+      title[0] = "Secretary general of student union";
+
+      place[3] = "New Oriental School, Beijing, China";
+      place[2] = "CAS";
+      place[1] = "CAS";
+      place[0] = "WUT";
+
+      time[3] = "Jan 2014 - July 2014";
+      time[2] = "Oct 2012 - Oct 2013";
+      time[1] = "Oct 2012";
+      time[0] = "Oct 2007 - June 2008";
+    }
+    void printExtraCurr (const int num = 4) {
+      std::cout << CYAN;
+      std::cout << "EXTRACURRICULAR ACTIVITIES" << std::endl;
+      std::cout << RESET;
+      for (int i = num-1; i >= 0; i--) {
+	std::cout << " - " 
+		  << title[i] << ", " 
+		  << place[i] << ", " <<  "    " 
+		  << time[i] << std::endl;
+      }
+      std::cout << std::endl;
+    }
+    ~ExtraCurr() {}
+  };
+
   School attendedSchool;
   Experience experience;
+  Publication publications;
+  ExtraCurr extracurricular;
 
 public:
   PersonInfo() {
@@ -156,10 +240,16 @@ public:
     std::cout << language << "\n" << std::endl;
   }
   void printEducation() {
-    attendedSchool.printSchool();
+    attendedSchool.printSchool(3);
   }
   void printExperience() {
     experience.printExperience();
+  }
+  void printPublications() {
+    publications.printPublication(3);
+  }
+  void printExtras() {
+    extracurricular.printExtraCurr(4);
   }
   ~PersonInfo() {}
 };
